@@ -1,18 +1,9 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const { default: mongoose } = require("mongoose");
+
 dotenv.config();
-
-const DB = process.env.MONGO_URI;
-
-mongoose
-  .connect(DB)
-  .then(() => {
-    console.log(`connection successful`);
-  })
-  .catch((error) => {
-    console.log(`connection failed ${error.message}`);
-  });
+// added our connection to db file
+require("./db/conn");
 
 // Middleware
 // so this checks if user is logged in
