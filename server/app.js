@@ -29,17 +29,22 @@ const middleware = (req, res, next) => {
 //   res.send("hello");
 // });
 
-// app.get("/about", middleware, (req, res) => {
-//   res.send("about");
-// });
+app.get("/about", middleware, (req, res) => {
+  res.send("about");
+});
 
-// app.get("/contact", (req, res) => {
-//   res.send("contact");
-// });
+app.get("/contact", (req, res) => {
+  // res.cookie("Test", "jaffer");
+  res.send("contact");
+});
 
-// app.get("/register", (req, res) => {
-//   res.send("register");
-// });
+app.get("/login", (req, res) => {
+  res.send("login");
+});
+
+app.get("/register", (req, res) => {
+  res.send("signup");
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);

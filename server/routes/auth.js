@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 require("../db/conn");
 const User = require("../models/userSchema");
@@ -67,7 +69,7 @@ router.post("/register", async (req, res) => {
       });
     } else if (password != cpassword) {
       return res.status(422).json({
-        error: "Pasword are not matching",
+        error: "Pasword are not matching ",
       });
     }
 
@@ -98,11 +100,29 @@ router.post("/login", async (req, res) => {
   }
 
   try {
-    const user = await User.findOne({ email: email, password: password });
+    const user = await User.findOne({ email: email });
+
     if (user) {
-      return res.json({ message: "You are logged in successfully" });
+      // bcrypt.compare(user_written, from_database)
+      const isMatch = await bcrypt.compare(password, user.password);
+
+      // Generate jason web token
+      const token = await user.generateAuthToken();
+
+      // saving our token as cookie
+      res.cookie("jwtoken", token, {
+        // expires toen in 30 days
+        expires: new Date(Date.now() + 25892000000),
+        httpOnly: true,
+      });
+
+      if (!isMatch) {
+        return res.status(400).json({ error: "Invalid Credentials" });
+      } else {
+        return res.json({ message: "You are logged in successfully" });
+      }
     } else {
-      return res.json({ error: "User not found" });
+      return res.status(400).json({ error: "Invalid Credentials" });
     }
   } catch (err) {
     console.log({ error: err });
