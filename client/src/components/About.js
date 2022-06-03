@@ -1,16 +1,19 @@
 import React from "react";
-import jaffapic from "../images/jaffer.webp";
 
 import "./About.css";
 
 const About = () => {
   return (
     <>
-      <div className='container shadow-sm p-3 rounded'>
+      <div className='container shadow-sm mt-3 p-3 rounded bg-white'>
         <form method=''>
           <div className='row'>
             <div className='col-md-4'>
-              <img className='img-thumbnail w-50' src={jaffapic} alt='Jaffa' />
+              <img
+                className='img-thumbnail w-50 h-75'
+                src='https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+                alt='Jaffa'
+              />
             </div>
             <div className='col-md-6'>
               <div className='profile-head text-start'>
@@ -51,12 +54,12 @@ const About = () => {
             </div>
 
             <div className='col-md-2'>
-              <input
-                type='submit'
+              <button
                 name='btnAddMore'
-                className='profile-edit-btn'
-                value='Edit Profile'
-              />
+                type='submit'
+                className='about-edit-button'>
+                Edit Profile
+              </button>
             </div>
           </div>
 
@@ -106,39 +109,31 @@ const About = () => {
                   </div>
                   <div className='row mt-3'>
                     <div className='col-md-6'>
-                      <label>Name</label>
+                      <label>Email</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>Jaffer Sunny</p>
-                    </div>
-                  </div>
-                  <div className='row mt-3'>
-                    <div className='col-md-6'>
-                      <label>Name</label>
-                    </div>
-                    <div className='col-md-6'>
-                      <p>Jaffer Sunny</p>
+                      <p>jaffer@test.com</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
                     <div className='col-md-6'>
-                      <label>Name</label>
+                      <label>Phone</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>Jaffer Sunny</p>
+                      <p>+92 31215314</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
                     <div className='col-md-6'>
-                      <label>Name</label>
+                      <label>Profession</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>Jaffer Sunny</p>
+                      <p>Web Developer</p>
                     </div>
                   </div>
                 </div>
                 <div
-                  class='tab-pane fade'
+                  class='tab-pane fade text-start'
                   id='profile'
                   role='tab'
                   aria-labelledby='profile-tab'>

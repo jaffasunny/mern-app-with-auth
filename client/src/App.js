@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
@@ -10,7 +11,7 @@ import Errorpage from "./components/Errorpage";
 
 function App() {
   return (
-    <div className='App'>
+    <div className='App bg-light min-vh-100 h-auto'>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -18,7 +19,7 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path="/*" element={<Errorpage />} />
+        <Route path='/*' element={<Errorpage />} />
       </Routes>
     </div>
   );

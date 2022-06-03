@@ -37,8 +37,8 @@ const Login = () => {
   return (
     <>
       <section className='login bg-light h-auto text-start'>
-        <div className='container py-lg-5 py-sm-4 pb-3'>
-          <div className='shadow-sm p-sm-5 p-3 bg-body rounded-3'>
+        <div className='container'>
+          <div className='shadow-sm bg-body rounded'>
             <div className='login-form'>
               <div class='row justify-content-between'>
                 <div className='col-md-6 signup-image text-center'>

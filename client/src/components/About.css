@@ -2,6 +2,24 @@
   border: none !important;
 }
 
+#myTabContent p {
+  margin: 0;
+}
+
+.about-info p {
+  color: blue;
+}
+
+.about-info p,
+.about-info label {
+  font-weight: bold;
+  letter-spacing: 0.25ch;
+}
+
+.img-thumbnail {
+  object-fit: cover;
+}
+
 .tabBorder {
   border-top: none !important;
   border-left: none !important;
@@ -21,4 +39,13 @@
   color: cornflowerblue !important;
   font-weight: bold;
   transition: 100ms ease-in-out;
+}
+
+.about-edit-button {
+  border: none;
+  padding: 0.5rem 1.25rem;
+  background-color: rgb(115, 115, 241);
+  color: white;
+  margin: 1rem 0 !important;
+  border-radius: 3px;
 }

@@ -64,8 +64,8 @@ const Signup = () => {
   return (
     <>
       <section className='signup bg-light h-auto'>
-        <div className='container py-lg-5 py-sm-4 pb-3'>
-          <div className='shadow-sm p-sm-5 p-3 bg-body rounded-3'>
+        <div className='container'>
+          <div className='shadow-sm bg-body rounded px-4'>
             <div className='signup-form'>
               <div className='row justify-content-between'>
                 <form

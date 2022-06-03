@@ -4,6 +4,7 @@
 
 .signup .form-group {
   border-bottom: 1px solid gainsboro;
+  width: fit-content;
   padding: 0.25rem;
 }
 
@@ -22,6 +23,8 @@
 .signup .form-group input {
   border: none;
   margin-left: 1rem !important;
+
+  padding: 0.5rem;
 }
 
 .signup input:focus {
