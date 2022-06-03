@@ -1,0 +1,24 @@
+.noborder {
+  border: none !important;
+}
+
+.tabBorder {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid #e9ecef !important;
+}
+
+.active.tabBorder {
+  border-bottom: 2px solid cornflowerblue !important;
+}
+
+.tabButton {
+  color: #bdbdbd !important;
+}
+
+.active.tabButton {
+  color: cornflowerblue !important;
+  font-weight: bold;
+  transition: 100ms ease-in-out;
+}

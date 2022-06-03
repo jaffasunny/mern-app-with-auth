@@ -2,37 +2,38 @@
   text-align: left;
 }
 
-.signup .form-group {
+
+.login .form-group {
   border-bottom: 1px solid gainsboro;
   padding: 0.25rem;
 }
 
 /* Chrome, Safari, Edge, Opera */
-.signup input::-webkit-outer-spin-button,
-.signup input::-webkit-inner-spin-button {
+.login input::-webkit-outer-spin-button,
+.login input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Firefox */
-.signup input[type="number"] {
+.login input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.signup .form-group input {
+.login .form-group input {
   border: none;
   margin-left: 1rem !important;
 }
 
-.signup input:focus {
+.login input:focus {
   outline: none;
 }
 
-.signup .form-button {
+.login .form-button {
   border: none;
 }
 
-.signup .form-button .form-submit {
+.login .form-button .form-submit {
   padding: 0.5rem 1.25rem;
   background-color: rgb(115, 115, 241);
   color: white;
@@ -40,6 +41,6 @@
   border-radius: 3px;
 }
 
-.signup-image img {
+.login-image img {
   width: 100%;
 }

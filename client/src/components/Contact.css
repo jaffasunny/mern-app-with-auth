@@ -1,0 +1,41 @@
+.contact_info_text {
+  font-size: 0.75rem;
+}
+
+@media screen and (min-width: 768px) {
+  .contact_info .cards {
+    width: 30% !important;
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+.contact_form input::-webkit-outer-spin-button,
+.contact_form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.contact_form input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.contact_form input,
+.contact_form textarea {
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+
+.contact_form input:focus,
+.contact_form textarea:focus {
+  outline: none;
+}
+
+.contact_form button {
+  border: none;
+  padding: 0.5rem 1.25rem;
+  background-color: rgb(115, 115, 241);
+  color: white;
+  margin: 1rem 0 !important;
+  border-radius: 3px;
+}

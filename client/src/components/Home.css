@@ -1,0 +1,15 @@
+.home-page::before {
+  content: "";
+  background-color: aliceblue;
+  height: 100%;
+  width: 50%;
+  z-index: -1;
+  position: absolute;
+  left: 0;
+}
+
+.home-page {
+  position: relative;
+  height: 90vh;
+  z-index: 9999;
+}
