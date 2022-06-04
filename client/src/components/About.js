@@ -1,12 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./About.css";
 
 const About = () => {
+  const navigate = useNavigate();
+
+  const callAboutPage = async () => {
+    try {
+      // backend res for about router
+      const res = await fetch("/about", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        credentials: "include",
+        withCredentials: true,
+      });
+
+      const data = await res.json();
+      console.log(data);
+
+      if (!res.status === 200) {
+        throw new Error(res.error);
+      }
+    } catch (error) {
+      console.log(error);
+      navigate("/login");
+    }
+  };
+
+  useEffect(() => {
+    callAboutPage();
+  }, []);
+
   return (
     <>
       <div className='container shadow-sm mt-3 p-3 rounded bg-white'>
-        <form method=''>
+        <form method='GET'>
           <div className='row'>
             <div className='col-md-4'>
               <img
@@ -22,10 +54,10 @@ const About = () => {
                 <p className='profile-rating mt-3 mb-5'>
                   RANKING : <span className='fw-bold'>9/10</span>
                 </p>
-                <ul class='nav nav-tabs noborder' id='myTab' role='tablist'>
-                  <li class='nav-item' role='presentation'>
+                <ul className='nav nav-tabs noborder' id='myTab' role='tablist'>
+                  <li className='nav-item' role='presentation'>
                     <button
-                      class='nav-link tabButton active tabBorder'
+                      className='nav-link tabButton active tabBorder'
                       id='home-tab'
                       data-bs-toggle='tab'
                       data-bs-target='#home'
@@ -36,9 +68,9 @@ const About = () => {
                       About
                     </button>
                   </li>
-                  <li class='nav-item' role='presentation'>
+                  <li className='nav-item' role='presentation'>
                     <button
-                      class='nav-link tabButton tabBorder'
+                      className='nav-link tabButton tabBorder'
                       id='profile-tab'
                       data-bs-toggle='tab'
                       data-bs-target='#profile'
@@ -85,9 +117,9 @@ const About = () => {
 
             {/* right side data toggle */}
             <div className='col-md-8 pl-5 about-info'>
-              <div class='tab-content' id='myTabContent'>
+              <div className='tab-content' id='myTabContent'>
                 <div
-                  class='tab-pane fade show active text-start'
+                  className='tab-pane fade show active text-start'
                   id='home'
                   role='tabpanel'
                   aria-labelledby='home-tab'>
@@ -133,7 +165,7 @@ const About = () => {
                   </div>
                 </div>
                 <div
-                  class='tab-pane fade text-start'
+                  className='tab-pane fade text-start'
                   id='profile'
                   role='tab'
                   aria-labelledby='profile-tab'>

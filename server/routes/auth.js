@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 
 require("../db/conn");
 const User = require("../models/userSchema");
+const authenticate = require("../middleware/authenticate");
 
 router.get("/", (req, res) => {
   res.send("Hello from server routerjs");
@@ -127,6 +128,13 @@ router.post("/login", async (req, res) => {
   } catch (err) {
     console.log({ error: err });
   }
+});
+
+// about us page
+
+router.get("/about", authenticate, (req, res) => {
+  console.log(req.rootUser);
+  res.send(req.rootUser);
 });
 
 module.exports = router;

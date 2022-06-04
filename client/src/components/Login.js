@@ -29,7 +29,7 @@ const Login = () => {
     if (res.status === 400 || !data) {
       window.alert("Invalid Credentials");
     } else {
-      window.alert("Login Successfull");
+      window.alert("Login Successful");
       navigate("/");
     }
   };
@@ -40,7 +40,7 @@ const Login = () => {
         <div className='container'>
           <div className='shadow-sm bg-body rounded'>
             <div className='login-form'>
-              <div class='row justify-content-between'>
+              <div className='row justify-content-between'>
                 <div className='col-md-6 signup-image text-center'>
                   <figure>
                     <img src={loginpic} alt='' />
@@ -53,7 +53,7 @@ const Login = () => {
                   <h2 className='form-title'>Signin</h2>
                   <div className='form-group'>
                     <label htmlFor='email'>
-                      <i class='zmdi zmdi-email'></i>
+                      <i className='zmdi zmdi-email'></i>
                     </label>
                     <input
                       type='text'
@@ -67,7 +67,7 @@ const Login = () => {
                   </div>
                   <div className='form-group'>
                     <label htmlFor='password'>
-                      <i class='zmdi zmdi-lock'></i>
+                      <i className='zmdi zmdi-lock'></i>
                     </label>
                     <input
                       type='password'
