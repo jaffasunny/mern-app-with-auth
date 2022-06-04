@@ -1,8 +1,49 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../App";
 import logo from "../images/logo192.png";
 
 const Navbar = () => {
+  const { state, dispatch } = useContext(UserContext);
+
+  const RenderNavMenu = () => {
+    if (state) {
+      return (
+        <>
+          <NavLink className='nav-link' to='/' end>
+            <li className='nav-item'>Home</li>
+          </NavLink>
+          <NavLink className='nav-link' to='/about'>
+            <li className='nav-item'>About</li>
+          </NavLink>
+          <NavLink className='nav-link' to='/contact'>
+            <li className='nav-item'>Contact</li>
+          </NavLink>
+          <NavLink className='nav-link' to='/logout'>
+            <li className='nav-item'>Logout</li>
+          </NavLink>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <NavLink className='nav-link' to='/' end>
+            <li className='nav-item'>Home</li>
+          </NavLink>
+          <NavLink className='nav-link' to='/contact'>
+            <li className='nav-item'>Contact</li>
+          </NavLink>
+          <NavLink className='nav-link' to='/login'>
+            <li className='nav-item'>Login</li>
+          </NavLink>
+          <NavLink className='nav-link' to='/signup'>
+            <li className='nav-item'>Signup</li>
+          </NavLink>
+        </>
+      );
+    }
+  };
+
   return (
     <>
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
@@ -28,21 +69,7 @@ const Navbar = () => {
           </button>
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
-              <NavLink className='nav-link' to='/' end>
-                <li className='nav-item'>Home</li>
-              </NavLink>
-              <NavLink className='nav-link' to='/about'>
-                <li className='nav-item'>About</li>
-              </NavLink>
-              <NavLink className='nav-link' to='/contact'>
-                <li className='nav-item'>Contact</li>
-              </NavLink>
-              <NavLink className='nav-link' to='/login'>
-                <li className='nav-item'>Login</li>
-              </NavLink>
-              <NavLink className='nav-link' to='/signup'>
-                <li className='nav-item'>Signup</li>
-              </NavLink>
+              <RenderNavMenu />
             </ul>
           </div>
         </div>

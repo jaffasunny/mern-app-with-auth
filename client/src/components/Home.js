@@ -29,7 +29,7 @@ const Home = () => {
 
   return (
     <>
-      <div className='home-page d-flex flex-column justify-content-center align-items-center'>
+      <div className='home-page d-flex flex-column justify-content-center align-items-center bg-white'>
         <div className='home-div'>
           <p className='pt-5 fw-bold text-primary'>WELCOME</p>
           <h1 className='fs-1 fw-bold'>{userName}</h1>
