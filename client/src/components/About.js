@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./About.css";
 
 const About = () => {
   const navigate = useNavigate();
+
+  const [userData, setUserData] = useState({});
 
   const callAboutPage = async () => {
     try {
@@ -20,7 +22,7 @@ const About = () => {
       });
 
       const data = await res.json();
-      console.log(data);
+      setUserData(data);
 
       if (!res.status === 200) {
         throw new Error(res.error);
@@ -49,8 +51,8 @@ const About = () => {
             </div>
             <div className='col-md-6'>
               <div className='profile-head text-start'>
-                <h5 className='fw-bold fs-3'>Jaffer Sunny</h5>
-                <h6 className='text-primary'>Web Developer</h6>
+                <h5 className='fw-bold fs-3'>{userData?.name}</h5>
+                <h6 className='text-primary'>{userData?.work}</h6>
                 <p className='profile-rating mt-3 mb-5'>
                   RANKING : <span className='fw-bold'>9/10</span>
                 </p>
@@ -128,7 +130,7 @@ const About = () => {
                       <label>User ID</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>12312312576568744</p>
+                      <p>{userData?._id}</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
@@ -136,7 +138,7 @@ const About = () => {
                       <label>Name</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>Jaffer Sunny</p>
+                      <p>{userData?.name}</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
@@ -144,7 +146,7 @@ const About = () => {
                       <label>Email</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>jaffer@test.com</p>
+                      <p>{userData?.email}</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
@@ -152,7 +154,7 @@ const About = () => {
                       <label>Phone</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>+92 31215314</p>
+                      <p>{userData?.phone}</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
@@ -160,7 +162,7 @@ const About = () => {
                       <label>Profession</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>Web Developer</p>
+                      <p>{userData?.work}</p>
                     </div>
                   </div>
                 </div>
@@ -174,7 +176,7 @@ const About = () => {
                       <label>User ID</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>12312312576568744</p>
+                      <p>{userData?._id}</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
@@ -182,39 +184,31 @@ const About = () => {
                       <label>Name</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>Jaffer Sunny</p>
+                      <p>{userData?.name}</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
                     <div className='col-md-6'>
-                      <label>Name</label>
+                      <label>Email</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>Jaffer Sunny</p>
-                    </div>
-                  </div>
-                  <div className='row mt-3'>
-                    <div className='col-md-6'>
-                      <label>Name</label>
-                    </div>
-                    <div className='col-md-6'>
-                      <p>Jaffer Sunny</p>
+                      <p>{userData?.email}</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
                     <div className='col-md-6'>
-                      <label>Name</label>
+                      <label>Phone</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>Jaffer Sunny</p>
+                      <p>{userData?.phone}</p>
                     </div>
                   </div>
                   <div className='row mt-3'>
                     <div className='col-md-6'>
-                      <label>Name</label>
+                      <label>Profession</label>
                     </div>
                     <div className='col-md-6'>
-                      <p>Jaffer Sunny</p>
+                      <p>{userData?.work}</p>
                     </div>
                   </div>
                 </div>
