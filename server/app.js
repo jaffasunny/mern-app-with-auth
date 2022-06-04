@@ -28,10 +28,11 @@ app.use(require("./routes/auth"));
 //   res.send("about");
 // });
 
-app.get("/contact", (req, res) => {
-  // res.cookie("Test", "jaffer");
-  res.send("contact");
-});
+// Contact us page
+// app.get("/contact", (req, res) => {
+//   // res.cookie("Test", "jaffer");
+//   res.send("contact");
+// });
 
 // app.get("/login", (req, res) => {
 //   res.send("login");

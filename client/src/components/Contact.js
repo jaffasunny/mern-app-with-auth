@@ -1,8 +1,80 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./Contact.css";
 
 const Contact = () => {
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const userContact = async () => {
+    try {
+      // backend res for about router
+      const res = await fetch("/getdata", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+      setUserData({
+        ...userData,
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+      });
+
+      if (!res.status === 200) {
+        throw new Error(res.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    userContact();
+  }, []);
+
+  // storing data in state
+  const handleInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
+  };
+
+  // send data to backend
+  const contactForm = async (e) => {
+    e.preventDefault();
+
+    const { name, email, phone, message } = userData;
+    console.log(userData);
+    const res = await fetch("/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, phone, message }),
+    });
+
+    const data = await res.json();
+
+    if (!data) {
+      console.log("message not send");
+    } else {
+      alert("Message Sent");
+      setUserData({ ...userData, message: "" });
+    }
+  };
+
   return (
     <>
       <div className='contact_info my-5'>
@@ -62,14 +134,17 @@ const Contact = () => {
                 <div className='contact-form-title fw-bold fs-3 text-start'>
                   Get in Touch
                 </div>
-                <form id='contact_form'>
+                <form id='contact_form' method='POST'>
                   <div className='row contact_form-name gap-3 justify-content-between flex-sm-row flex-column my-4'>
                     <input
                       type='text'
                       id='contact_form-name'
                       className='col contact_form-name input_field py-1 px-3 mb-3'
                       placeholder='Name'
-                      required='true'
+                      value={userData.name}
+                      name='name'
+                      onChange={handleInput}
+                      required={true}
                       autoComplete='xyz123'
                     />
                     <input
@@ -77,16 +152,22 @@ const Contact = () => {
                       id='contact_form-email'
                       className='col contact_form-email input_field py-1 px-3 mb-3'
                       placeholder='Email'
+                      value={userData.email}
+                      name='email'
+                      onChange={handleInput}
                       autoComplete='xyz123'
-                      required='true'
+                      required={true}
                     />
                     <input
                       type='number'
                       id='contact_form-phone'
                       className='col contact_form-phone input_field py-1 px-3 mb-3'
                       placeholder='Phone Number'
+                      value={userData.phone}
+                      name='phone'
+                      onChange={handleInput}
                       autoComplete='xyz123'
-                      required='true'
+                      required={true}
                     />
                   </div>
 
@@ -94,6 +175,9 @@ const Contact = () => {
                     <textarea
                       className='text-field contact_form- px-3 py-2 w-100'
                       placeholder='Message'
+                      value={userData.message}
+                      name='message'
+                      onChange={handleInput}
                       cols='30'
                       rows='10'></textarea>
                   </div>
@@ -101,6 +185,7 @@ const Contact = () => {
                   <div className='text-start'>
                     <button
                       type='submit'
+                      onClick={contactForm}
                       className='button contact_submit-button'>
                       Send Message
                     </button>

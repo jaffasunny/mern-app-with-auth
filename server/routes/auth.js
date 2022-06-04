@@ -131,10 +131,44 @@ router.post("/login", async (req, res) => {
 });
 
 // about us page
-
 router.get("/about", authenticate, (req, res) => {
-  console.log(req.rootUser);
+  console.log("Hello from About Page");
   res.send(req.rootUser);
+});
+
+// get user data from contactus and homepage
+router.get("/getdata", authenticate, (req, res) => {
+  console.log("Hello from Contact Page");
+  res.send(req.rootUser);
+});
+
+// Contactus page
+router.post("/contact", authenticate, async (req, res) => {
+  try {
+    const { name, email, phone, message } = req.body;
+    console.log(req.body);
+    if (!name || !email || !phone || !message) {
+      console.log("error in contact form");
+      return res.json({ error: "Please Fill the contact form" });
+    }
+
+    const userContact = await User.findOne({ _id: req.userID });
+
+    if (userContact) {
+      const userMessage = await userContact.addMessage(
+        name,
+        email,
+        phone,
+        message
+      );
+
+      await userContact.save();
+
+      res.status(201).json({ message: "user contact successful" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 module.exports = router;
